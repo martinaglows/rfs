@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roland Fink Projekte</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --bg: #f9f9f9;
+      --border: #d8d8d8;
+      --muted: #888888;
+      --text: #333333;
+      --dark: #111111;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', Helvetica, Arial, sans-serif;
+      background: var(--white);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.75;
+    }
+
+    header {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 2.5rem 2rem 2rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.3rem;
+    }
+
+    .tagline {
+      font-size: 13px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 0.9rem 1.4rem;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text);
+      text-decoration: none;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    nav a:hover { color: var(--dark); border-bottom-color: var(--dark); }
+
+    main { max-width: 820px; margin: 0 auto; padding: 0 1.5rem 5rem; }
+
+    section {
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 1.25rem;
+      font-weight: 300;
+    }
+
+    h2 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: clamp(1.35rem, 3vw, 1.9rem);
+      font-weight: 400;
+      color: var(--dark);
+      line-height: 1.3;
+      margin-bottom: 1.5rem;
+    }
+
+    h3 {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin: 2.25rem 0 0.75rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    p { margin-bottom: 1rem; font-weight: 300; color: var(--text); }
+    p:last-child { margin-bottom: 0; }
+    em { font-style: italic; }
+    strong { font-weight: 600; color: var(--dark); }
+    a { color: var(--text); }
+    a:hover { color: var(--dark); }
+
+    /* Bio list */
+    .bio-list {
+      list-style: none;
+      border-left: 2px solid var(--border);
+      padding-left: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .bio-list li {
+      font-size: 15px;
+      font-weight: 300;
+      padding: 0.15rem 0;
+      line-height: 1.65;
+    }
+
+    /* Genre grid */
+    .genre-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .genre-block { border-top: 1px solid var(--border); padding-top: 1rem; }
+    .genre-block h4 {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+      font-weight: 400;
+    }
+    .genre-block ul { list-style: none; padding: 0; }
+    .genre-block ul li {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--dark);
+      padding: 0.35rem 0;
+      border-bottom: 1px dotted var(--border);
+      line-height: 1.4;
+    }
+    .genre-block ul li:last-child { border-bottom: none; }
+    .genre-block ul li span {
+      display: block;
+      font-weight: 300;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 0.1rem;
+    }
+
+    /* Press */
+    .press-note {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--dark);
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 1rem;
+    }
+    .press-note p {
+      font-size: 15px;
+      font-style: italic;
+      font-weight: 300;
+      color: var(--text);
+      margin: 0;
+      line-height: 1.7;
+    }
+    .press-source {
+      font-style: normal;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      display: block;
+      margin-top: 0.5rem;
+    }
+
+    /* CD grid */
+    .cd-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .cd-card { border: 1px solid var(--border); padding: 1.25rem; }
+    .cd-card .cd-title {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 0.95rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+    .cd-card .cd-tracks {
+      font-size: 12.5px;
+      font-weight: 300;
+      color: var(--muted);
+      font-style: italic;
+      line-height: 1.7;
+    }
+    .cd-price {
+      display: inline-block;
+      margin-top: 0.75rem;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    /* Heft grid */
+    .heft-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+    .heft-card { border: 1px solid var(--border); padding: 1.25rem; }
+    .heft-card p { font-size: 14px; font-weight: 300; margin: 0; }
+    .heft-price {
+      display: block;
+      margin-top: 0.6rem;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--dark);
+    }
+
+    .order-note {
+      margin-top: 1.5rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    /* Kontakt */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .contact-card { border: 1px solid var(--border); padding: 1.5rem; }
+    .contact-card .role {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .contact-card .name {
+      font-family: 'Libre Baskerville', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--dark);
+      margin-bottom: 0.75rem;
+    }
+    .contact-card p { font-size: 14px; font-weight: 300; line-height: 1.9; margin: 0; }
+    .contact-card a { color: var(--text); text-decoration: none; }
+    .contact-card a:hover { text-decoration: underline; color: var(--dark); }
+
+    /* Press scans */
+    .press-scans {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 1rem;
+    }
+    .press-scans img {
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--border);
+      display: block;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 12px;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.08em;
+      font-weight: 300;
+    }
+
+    @media (max-width: 500px) {
+      nav a { padding: 0.75rem 0.9rem; font-size: 11px; }
+      section { padding: 2.75rem 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Roland Fink Projekte</h1>
+  <p class="tagline">Konzerte · Arrangements · Musizierhefte · seit 1965</p>
+</header>
+
+<nav>
+  <a href="#projekte">Projekte</a>
+  <a href="#singers">Roland Fink Singers</a>
+  <a href="#pressestimmen">Pressestimmen</a>
+  <a href="#roland-fink">Roland Fink</a>
+  <a href="#musik-kaufen">Musik kaufen</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
+
+<main>
+
+  <!-- PROJEKTE -->
+  <section id="projekte">
+    <p class="eyebrow">Roland Fink Projekte</p>
+    <h2>Von Roland Fink Singers zu Roland Fink Projekte</h2>
+    <p>Nach 50jährigem Bestehen gaben die «Roland Fink Singers» am 20. Dezember 2015 ihr letztes Konzert. Inzwischen wurde aus dem Chor der Nachfolgeverein «Roland Fink Projekte». Diese Organisation befasst sich mit Konzerten aller Art. In erster Linie sind es Programme mit Chor und Orchester.</p>
+    <p>Ein solches Projekt wurde im November 2018 durchgeführt, mit je einem Konzert in Effretikon (um 50 Jahre Musikschule Effretikon zu feiern) und in Andelfingen (aus Anlass des 20jährigen Jubiläums des Konzertvereins Andelfingen).</p>
+    <p>Dabei stellte das Orchester Frenesí die Instrumentalregister und im Chor wirkten ehemalige Roland Fink Singers sowie neue Sängerinnen und Sänger mit.</p>
+    <p>Das Orchester bestand aus dem Santé-Quartett Winterthur, ergänzt mit Blockflötistinnen und Blockflötisten der Musikschule «Alato» Illnau-Effretikon, Lindau, Dietlikon, Wallisellen sowie der Musikschule Andelfingen und Umgebung.</p>
+    <p>Zudem waren weitere Musikerinnen und Musiker (Querflöten, Oboe, Klarinette, Bassklarinette, Fagott, Kontrabass, Gitarren, Harfe und Perkussion) mit dabei. Die Leitung hatte Roland Fink.</p>
+    <p>Wenn Sie bei einem nächsten Projekt gerne dabei wären, können Sie <a href="#kontakt">hier mit uns Kontakt aufnehmen</a>.</p>
+    <p>Ihr/dein Interesse freut uns!<br>Roland Fink Projekte<br>Vorstand</p>
+  </section>
+
+  <!-- ROLAND FINK SINGERS -->
+  <section id="singers">
+    <p class="eyebrow">Roland Fink Singers</p>
+    <h2>Ein Chor, der immer neue Anstösse gab</h2>
+    <p>Im Mai 1965 gründete Roland Fink mit Kolleginnen und Kollegen aus dem Oberseminar Zürich die Roland Fink Singers.</p>
+    <p>Er wollte in der Chormusik neue Wege gehen. Ihn reizten weder die Klassik noch die typische Chorliteratur. Sein Chor sollte Jazznummern singen – und Standards, bewährte Stücke populärer Musik. Das erste Lied war «September in the Rain» und wurde im gleichen Jahr am Jazz-Festival Zürich stürmisch beklatscht: Ein Chor, der moderne populäre Musik sang – das gabs in der Schweiz noch nicht.</p>
+    <p>Seither reisten die Roland Fink Singers um die halbe Welt. Sie waren in vielen Ländern Europas, in Nordamerika, in Brasilien und Australien. Und sie haben die Spartengrenzen der leichten Musik überschritten.</p>
+    <p>Zu den Jazzmelodien und Standards kamen Schlager, Rocksongs, Western, Shanties, Spirituals, Madrigale, Liebeslieder aus fünf Jahrhunderten, südamerikanische Melodien, Volkslieder und Weihnachtsmusik hinzu.</p>
+    <p>Roland Fink arrangierte sämtliche Lieder selbst und machte immer wieder Klangexperimente, die auch eine gewiefte Zuhörerschaft zu überraschen vermochten.</p>
+    <p>Im Dezember 2015, nach fünfzig Jahren, gaben die Roland Fink Singers ihr letztes Konzert.</p>
+
+    <h3>Sängerinnen und Sänger</h3>
+    <p>Nach dem ersten Auftritt (1965) löste sich der Chor bald auf. Die jungen Lehrerinnen und Lehrer, aus denen er bestand, zerstreuten sich über die ganze Schweiz. Eine Probe pro Woche war für viele zu viel. Roland Fink stockte die wenigen Verbliebenen gleich auf 20 Mitglieder auf. Später baute der Experimentierfreudige den Chor auf bis zu 40 Sängerinnen und Sänger aus, dann liess er ihn wieder auf 16 abmagern. Seit vielen Jahren liegt die ideale Grösse bei rund 25 Mitgliedern.</p>
+    <p>Lange waren die Mehrheit davon Lehrpersonen. Heute nur noch rund die Hälfte. Und die andern? Sie sind zum Beispiel Sekretärin, Ingenieur, Journalist, Therapeutin, Philosophin, Postangestellte, Hortleiter. Die meisten bleiben sehr lange beim Chor. Am allermeisten Erfahrung hat Katharina Rapp. Die 1945 geborene Winterthurerin ist seit Mai 1965 dabei, seit der allerersten Probe des Chors.</p>
+
+    <h3>Die Proben</h3>
+    <p>Probe ist einmal in der Woche in Dietlikon ZH. Zweieinhalb Stunden wird geprobt – in lockerer Atmosphäre. Bei den Konzerten hat normalerweise keiner ein Blatt vor der Nase, alle blicken auf den Chorleiter. Die Konzentration ist total, die Präsenz stark, die Präzision gross. Seit Januar 2012 singt erstmals eine Frau im Tenor mit.</p>
+
+    <h3>Der Chor und sein Umfeld</h3>
+    <p>Manches Chormitglied musste sich früher rechtfertigen, wenn Freunde fragten: «In welchem Chor singst du denn?» und die Antwort lautete: «Wir machen vor allem leichte Musik». Leichte Musik aber hielten viele Zeitgenossen für unseriös. Heute weiss jedermann, dass gute Chormusik nicht zwingend nach Bach oder Mendelssohn klingen muss. Viele andere Chöre haben sich ganz der populären Musik zugewandt oder hängen ihren Konzerten einen «Pop»-Teil an. Die «Roland Fink Singers» bleiben ihrem Stil treu. Oder besser: ihren Stilen. Das ist Musik mit Substanz, Musik, die aber immer auch unterhaltend ist. Darin sind sie stark, und das hört man. Wie die «Roland Fink Singers» ist auch ihr Publikum zusammengesetzt: farbig und aus jeder Altersstufe.</p>
+
+    <h3>Highlights und Rekorde</h3>
+    <p><strong>Reisen</strong><br>Die zahlreichen Konzertreisen brachten den «Roland Fink Singers» grossartige Erlebnisse. In einem Kunstgymnasium in Norddeutschland fand der Chor das aufmerksamste, enthusiastischste Publikum. In einer Bündner Berggemeinde hatten die Singers einen bewegenden Auftritt mit dem einheimischen Chor. In Brasilien sangen sie Bossa Novas, und manche Besucher sprangen auf und begannen zu tanzen, einige mit glänzenden Augen. In Polen, kurz vor Ende des Kommunismus, sang der Chor ahnungslos <em>Lulaijze Jezuniu</em>, das emotionalste und berühmteste Weihnachtslied des Landes. Viele Zuhörer und auch einige Chorsänger weinten.</p>
+    <p><strong>Numerischer Rekord</strong><br>1975 sang der Chor in Arizona (USA) in der offenen Arena einer Rentnersiedlung vor 8000 rhythmisch klatschenden Zuhörern.</p>
+    <p><strong>Serienrekorde</strong><br>40mal trat eine Kleinformation in Zürich als Backgroundchor des Musicals «Hair» auf. Hautnah erlebten sie den damals sensationellen Gag vor der Pause: Unter einem riesigen Tuch zogen sich die Darsteller aus und standen dann nackt da. Die Backgroundsänger aber lernten, wie rasch solche Reize verfliegen.<br>38mal bestritt eine Abordnung des Chors den Schlussabend einer Europareise für amerikanische Touristen. Man sang das ganze Volkslieder-Repertoire hinauf und hinunter und jodelte sogar ein bisschen.</p>
+    <p><strong>Lernrekord</strong><br>Jedes Jahr wird ein Teil des Hunderte von Liedern umfassenden Repertoires ersetzt oder verändert. In Konzerten singen die «Roland Fink Singers» in der Regel auswendig und in den Originalsprachen. Bei Arrangements von Roland Fink gibt es praktisch keine sich wiederholenden Teile – eine tüchtige Herausforderung.</p>
+    <p><strong>Kälterekord</strong><br>Ein Adventskonzert in einer ungeheizten Prager Kirche. Einige Sänger klapperten so stark mit den Zähnen, dass sie zu singen aufhörten.</p>
+    <p><strong>Erfolg im Tierreich</strong><br>Im Jahre 2007, während einer Probenwoche in Hertenstein, entwickelte sich ein Pfau vor dem Fenster zum Fan des Songs <em>Walking My Baby Back Home</em>. Er begann gurgelnd zu röhren, wann immer die Melodie erklang, und öffnete mit verklärtem Blick sein knallblaues Präsentiergefieder.</p>
+
+    <h3>Fleischsuppe, Hund als Dirigent</h3>
+    <p><strong>Denkwürdige Auftritte</strong><br>1975 konnten die «Roland Fink Singers» noch unter Stabführung des letzten Walzerkönigs singen. Rudolf Stolz dirigierte eigene Werke in einer Sendung des österreichischen Fernsehens. Der Chor sang, und anschliessend walzerte er mit Mitgliedern des Wiener Staatsopernballetts. TV-Sendungen in der Schweiz, in Deutschland, Österreich und den USA präsentierten den «swingenden Chor aus Zürich». Moderatoren von Heidi Abel über Toni Sailer bis zu Sepp Trütsch machten Kurzinterviews mit dem Chorleiter. In den Pausen zwischen den Aufnahmen plauderten die Sänger einmal mit Josep Carreras, ein andermal mit dem Trio Eugster.</p>
+    <p><strong>Fragwürdige Szenen</strong><br>In einem Hotel traten die Roland Fink neben einem Swimmingpool vor einem Scheich und einigen leicht bekleideten Damen auf. Gut für die Chorkasse – doch man beschloss, solches nicht zu wiederholen. Unüblichster Austrittsort war die (abgeschaltete) Rolltreppe in einem US-Einkaufszentrum.</p>
+    <p><strong>Oden an Produkte</strong><br>Ohne es zu wissen, genossen viele Schweizerinnen und Schweizer in den Siebzigerjahren die «Roland Fink Singers» am Bildschirm. Damals wurden sehr viele TV-Werbespots mit Chorgesang untermalt. Und die «Roland Fink Singers» waren der einzige Chor, der immer schnell in der Lage war, eine Dreier- oder Fünferdelegation ins Tonstudio zu schicken. Da standen dann die Sänger und jauchzten: «Knorr Fleischsuppe spezial isch en Gnuss bi jedem Mahl!» oder «Frolic plaît bien au chien, et cela se comprend très très bien!» Dieses Opus ist den Beteiligten noch in froher Erinnerung, weil hier zum ersten und bisher letzten Mal ein Hund den Chor dirigierte: Im schon fertig gedrehten Film wedelte ein Dackel im Cha-cha-cha-Rhythmus, an den sich die Musik anzupassen hatte. Nach vielen gehauchten Oden an Kolagetränke oder Enthaarungssprays wurde es den «Roland Fink Singers» zuviel. Sie wandten sich von dieser Branche ab.</p>
+
+    <h3>Interview mit dem Chorleiter</h3>
+    <p><em>Wie würdest du deinen Chor als nüchterner Musikkritiker einschätzen?</em><br>Es ist ein guter, ja sehr guter Chor, sicher im oberen Drittel. Keiner mit ausgebildeten Stimmen, das würde anders, vielleicht unpassend klingen. Aber einer, der eine Menge Wissen und Können angesammelt hat. Wir haben Leute, die Jahrzehnte dabei sind. Immer neue «Generationen» von Sängerinnen und Sängern lernen bei ihnen, wie man im Spanischen eine Buchstabenfolge wie «t-a-e-n» auf einer einzigen Note singen kann. Oder den elastischen Swing – den macht uns in der Schweiz nicht so leicht ein Chor nach.</p>
+    <p><em>Kann man Swing erlernen?</em><br>Wenn man mitten in einem Klangkörper singt, swingt man leichter mit, auch wenn man vorgezogene oder abgebrochene Noten bisher nicht kannte. Swing haben die «Roland Fink Singers» wie ein kollektives Gedächtnis intus.</p>
+    <p><em>Also braucht man keine speziellen Sängerqualitäten, wenn man eintreten will?</em><br>Man sollte eine gute Stimme haben und entweder gut Noten lesen oder sehr gut nach Gehör singen. Man sollte auch Sinn für Sprachen haben – man muss ja zum Beispiel Texte in brasilianischem Portugiesisch, Polnisch oder Finnisch auswendig lernen.</p>
+    <p><em>«September In The Rain» war das einzige Lied, das der Chor konnte, als er 1965 am Zürcher Jazz-Festival auftrat. Das war ja tollkühn! Reisst du gern Dinge an, vor denen andere Angst hätten?</em><br>Das kann sein. Ich habe zum Beispiel immer gesagt «Wir kriegen das hin!», wenn es darum ging, eine Tournee durch ein riesiges Land wie Brasilien zu organisieren. Da hätte so viel schief laufen können! Letztlich haben wir es auch immer geschafft, ohne Schulden zu machen. Und waren um unerhörte Erlebnisse reicher.</p>
+    <p><em>Eine Familie?</em><br>Teilweise schon. Die «Roland Fink Singers» sind eine Gemeinschaft von Menschen, die auch neben der Musik viel miteinander unternehmen.</p>
+    <p><em>Und was sagst du zum Thema musikalische Basisdemokratie?</em><br>Es ist noch immer so, dass viele fertig gesetzte Lieder still und leise verschwinden, weil ich merke, dass sie beim Chor nicht ankommen, oder dass sie gar lautstark abgelehnt werden. Manchmal finden meine Sänger auch einen kleinen Fehler in einer Partitur. Weiter geht die musikalische Mitbestimmung nicht. Wir sind aber weit demokratischer als andere Chöre: Neue Leute etwa müssen sich beim Singen und menschlich einleben, erst dann sagen Chor und Dirigent ja zu ihnen.</p>
+    <p style="font-size:13px;color:var(--muted);font-style:italic;">Interview: Peter Trösch</p>
+  </section>
+
+  <!-- PRESSESTIMMEN -->
+  <section id="pressestimmen">
+    <p class="eyebrow">Pressestimmen</p>
+    <h2>Pressestimmen</h2>
+    <div class="press-scans">
+      <img src="Zeitung8.gif" alt="Pressestimme: Mit Weihnachtsliedern auf Reisen – Trüllikon" loading="lazy">
+      <img src="KritikAarau_klein.webp" alt="Pressestimme: Ein Chor, der zur Spitze in der Schweiz zählt – Aarau" loading="lazy">
+      <img src="image-asset.gif" alt="Pressestimme: Weihnachtliche Klänge – Andelfingen" loading="lazy">
+      <img src="Zeitung2.gif" alt="Pressestimme: Konzert der Roland Fink Singers in der Kirche Andelfingen" loading="lazy">
+      <img src="Zeitung5.gif" alt="Pressestimme: Weit ab vom Landläufigen – Altikon" loading="lazy">
+    </div>
+  </section>
+
+  <!-- ROLAND FINK -->
+  <section id="roland-fink">
+    <p class="eyebrow">Roland Fink</p>
+    <h2>Biografie</h2>
+    <p>Bearbeiter, Komponist, Dirigent, Konzertorganisator</p>
+    <ul class="bio-list">
+      <li>*1937, aufgewachsen in Solothurn</li>
+      <li>Kaufmännische Ausbildung in der Baubranche</li>
+      <li>1964 Eidgenössische Matur B auf dem zweiten Bildungsweg</li>
+      <li>1965 Gründer der «Roland Fink Singers», 35 Konzertreisen</li>
+      <li>1966 Zürcher Primarlehrerpatent</li>
+      <li>1968 Gründer der Musikschule Effretikon und deren Leiter bis 1985</li>
+      <li>1971 Konservatorium Winterthur – Abschluss in allen Theoriefächern und Chorleitung (Ernst Hess und Willi Gohl)</li>
+      <li>1975 Gründer des Jugendorchesters «Frenesí», 42 Konzertreisen</li>
+      <li>Dezember 2015: letztes Konzert der «Roland Fink Singers»</li>
+    </ul>
+    <p>Roland Fink ist Gründungsmitglied und Präsident des Konzertvereins Andelfingen. Er lebt mit seiner Frau Elisabeth in Alten ZH und ist als Arrangeur, Komponist, Dirigent und Gitarrist tätig.</p>
+
+    <h3>Roland Finks Werke</h3>
+    <p><strong>Chor</strong><br>Fink hat in den bald 50 Jahren mit den Singers jedes einzelne Lied für diesen Chor arrangiert. Einzelne seiner Fassungen (zum Beispiel von ihm entstaubte, aber nicht entfremdete Volkslieder) werden auch von anderen Chören gesungen. Seine Spezialproduktionen für Chor, Sprecher und Orchester, «Die Bergpredigt», «Max und Moritz», «A Child's Christmas in Wales», wurden mehrmals mit Erfolg aufgeführt.</p>
+    <p><strong>Frenesí</strong><br>Fink gründete dieses Jugendorchester 1975. Instrumente: Flöten aller Art und Herkunft, Gitarren, Streich- und Perkussionsinstrumente. Musikalisch ähnliche Ausrichtung wie die «Roland Fink Singers», mit denen Frenesí oft kooperiert. Insgesamt haben sich bei Frenesí mehr als 700 Jugendliche für Gemeinschaftserlebnisse mit Musik moderner Prägung begeistert. Frenesí hat bisher 45 Konzertreisen unternommen, darunter fünf nach Brasilien, acht nach Nordamerika.</p>
+    <p><strong>Publikationen</strong><br>Von Roland Finks Eigenkompositionen und Arrangements im Volksliederbereich sind bei Schott Mainz und im Pan-Verlag Zürich insgesamt 25 Hefte erschienen. <a href="#musik-kaufen">Hier gehts zu den Musizierheften</a>.</p>
+    <p><strong>Märchen</strong><br>Vertonungen von «Schneeweisschen und Rosenrot», «Der Trommler», «Der goldene Vogel», Max Bolligers «Hirtenlied» (auch in polnischer Fassung für Aufführungen in Warschau 1992), Ivan Gantchevs «Der Mondsee».</p>
+
+    <h3>Wie Roland Fink komponiert – und wie nicht</h3>
+    <p><strong>Nahklang-Erlebnis</strong><br>Bei den Jazznummern liegen meist Klaviersätze für eine bis drei Stimmen vor. Nie aber ein fertiger vierstimmiger Satz. Roland Fink bearbeitet die Töne so, dass er den Standard des Komponisten halten oder die Komposition gar aufwerten kann. Es entsteht ein Satz von vier bis acht Stimmen. Oder mehr: Im Schlussakkord von <em>Koffer in Berlin</em> stehen zwölf Stimmen übereinander. Die Zusatztöne können die ursprünglichen Akkorde verändern, den Charakter der Stücke dürfen sie aber nicht verfälschen. «Die Jazz-Akkorde findet man übrigens nicht erst in der Jazz-Zeit», sagt Fink. «Manche wurden schon von Brahms und Schubert verwendet». Die kleine Terz, den Tonsprung, der bei Gershwins <em>The Man I Love</em> die Hauptrolle spielt, gab es gar schon zu Mozarts Zeiten. Wichtigstes Gestaltungsmittel sind für Roland Fink die eng gesetzten Akkorde (Close Harmonies) der 1920er und 1930er Jahre, in denen sich die Töne reiben. Sie prägen das Feeling von Swing und anderen Gattungen.</p>
+    <p><strong>Die gute Linie</strong><br>Fink will, dass die Begleitstimmen (Alt, Tenor, Bass) nicht willkürlich herumhüpfen. Jede Stimme soll «eine günstige Stimmführung» erhalten. Bei Eigenkompositionen hört Fink die Musik, wenn er den Text auf sich wirken lässt: «Ich höre Akkorde und schreibe sie auf.» Nachher prüft er sie auf der Gitarre oder am Cembalo.</p>
+    <p><strong>Soundlabor</strong><br>Fink experimentiert oft. Vor allem Überleitungen zwischen Strophen geraten ihm manchmal zu kleinen Virtuosenstücken. Bei der Planung von Konzertreihen, etwa für Advent, kann er die Instrumentierung von Null an planen. Da setzt er gern unkonventionelle Akzente: Fulminante Passagen des Riesen-Xylophons «Marimbaphon» mit einer Streichergruppe konnten in Konzerten ganz neue Klangwelten eröffnen. Die wie Steelband-Fässer klingenden Bassblockflöten von 120 cm Höhe lassen, wenn sie mit Swing eingesetzt werden, keinen Gedanken an Blockflöten-Bravheit aufkommen.</p>
+    <p><strong>Was Roland Fink will</strong><br>Im Zweifel wählt er den einfacheren Klang. Er drückt nicht auf die Tränendrüsen. Das traurige <em>Simelibärg</em>, bei dem andere Chöre oft künstliche Emotionen produzieren, singen die Roland Fink Singers seit Jahren relativ rasch und wie beiläufig. Die Gefühle kommen trotzdem. Fink schabt falsches Gold und echten Schmutz von den Klängen. Oft genügt ein Handgriff, und ein Stück klingt frisch. Die Roland Fink Singers waren einer der ersten Chöre, die Melodien ohne Texte oder lange gesummte oder auf «Dabadabadaa» gesungene Partien im Repertoire hatten.</p>
+    <p><strong>Was er nicht will</strong><br>Fink verabscheut Kommerzmusik mit schäbigen Tricks (etwa mit der Erhöhung um einen Ton gegen Ende des Liedes). Viele neuere Songs bestehen seine Prüfung nicht. Natürlich war Fink auch zuweilen zu puristisch. Es dauerte Jahre, bis er das erste Beatles-Stück adaptierte. Die Gruppe Abba oder der Sänger Prince waren für ihn in einer Weise eigenständig, die ihm nichts sagte. Ein gewisses Mass an Abgehangensein ist schon nötig, um Roland Fink hellhörig zu machen.</p>
+
+    <h3>Die Musik – weniger bunt, trotzdem farbig</h3>
+    <p>Die «Roland Fink Singers» sangen Musik aus vier Sparten.</p>
+    <p><strong>Jazz und Standards</strong><br>Erstens Swing und Bebop (löste den Swing ab etwa 1940 ab, Jazz als Kunstform). Zweitens Standards (bewährte Stücke leichter Musik, die auch jazzig sein können).</p>
+    <p><strong>Volkslieder</strong><br>Aus vielen Ländern und Epochen, in Originalsprachen. Oft auch komponierte Stücke, die im Volk tradiert werden.</p>
+    <p><strong>Advent</strong><br>Lieder aus Dutzenden von Ländern in Originalsprache, oft durch neu komponierte Zwischenelemente verbunden. Die «Roland Fink Singers» haben auch schon zweimal geografisch fokussierte Weihnachtsmusik präsentiert (Spanien und Wales).</p>
+    <p><strong>Eigenkompositionen</strong><br>Roland Fink komponiert eigene Werke in einem Stil zwischen Klassik, Spätromantik, Expressionismus und Jazz.<br>1989/91: «Die Bergpredigt» (vielsprachige Texte und Lieder)<br>1996: «Max und Moritz» (Lesung, Lieder und Zeichnungen)</p>
+    <p><strong>Die Konzerte</strong><br>Sie bildeten anfangs ein sehr breites Spektrum ab. Man begann zum Beispiel mit einem auf «Dabadabada» gesungenen Renaissancestück und landete nach Volksliedern und Tangos bei einer US-Rocknummer. Später teilte Roland Fink die Genres auf – vor allem, um Probleme mit der Instrumentierung zu vermeiden. Bei Jazz und Standards begleitet heute eine Jazzcombo den Chor, bei Volksmusik ein klassisches Orchester oder ein Spezialensemble, etwa mit Flöten, Streichern, Harfe, Gitarren usw.</p>
+    <p><strong>Kann man die Roland Fink Singers zu jedem Zeitpunkt für ein Konzert in jedem Genre engagieren?</strong><br>Die Weihnachtslieder bitte nur zur Adventszeit. Aber im Ernst: Der Chor hat nicht alles jederzeit präsent. Doch kann er innert weniger Wochen oder Monate ein Konzert aus einer der drei ersten Sparten zusammenstellen.</p>
+
+    <h3>Beispiele zu den Musikgenres</h3>
+    <div class="genre-grid">
+      <div class="genre-block">
+        <h4>Jazz &amp; Standards</h4>
+        <ul>
+          <li><em>Fascinating Rhythm</em><span>George Gershwin, Jazz-Standard, der sein Thema (verrückter Rhythmus) gleich vorexerziert</span></li>
+          <li><em>Moon River</em><span>Henri Mancini, romantische Komposition mit Jazz-Klängen, typischer Standard</span></li>
+          <li><em>Ghost Riders In The Sky</em><span>Stan Jones, dramatisches, lautmalerisches Westernstück mit Jazzakkorden</span></li>
+        </ul>
+      </div>
+      <div class="genre-block">
+        <h4>Volkslieder</h4>
+        <ul>
+          <li><em>O du schöner Rosengarten</em><span>Liebeslied mit witzigem Text, musikalisch beinahe ein Choral</span></li>
+          <li><em>Tanzen und Springen</em><span>Hans Leo Hassler, 1530–1612, Spätrenaissance mit Barockeinschlag</span></li>
+          <li><em>Phil The Fluter</em><span>Mitreissendes irisches Volksstück. Irische Musik war ein Nährboden für die US-Populärmusik</span></li>
+        </ul>
+      </div>
+      <div class="genre-block">
+        <h4>Advent</h4>
+        <ul>
+          <li><em>Wohl zmittst i de Nacht</em><span>Anheimelndes zürichdeutsches Lied</span></li>
+          <li><em>Lulaijze Jezunju</em><span>Das polnische Weihnachtslied schlechthin</span></li>
+          <li><em>La serrana de la sierra</em><span>Wild, rhythmisch sehr komplex, aus Spanien</span></li>
+          <li><em>Navidad española</em><span>Roland Fink, Weihnachtskonzert nach dem Lukas-Evangelium, spanisch</span></li>
+          <li><em>A Child's Christmas In Wales</em><span>Roland Fink, Geschichte von Dylan Thomas, mit Erzähler und Orchester, dazu Lieder von den britischen Inseln</span></li>
+        </ul>
+      </div>
+      <div class="genre-block">
+        <h4>Eigenkompositionen</h4>
+        <ul>
+          <li><em>Die Bergpredigt (1989/91)</em><span>Gelesen in vier Sprachen, der Chor singt die Schlüsselstellen</span></li>
+          <li><em>Max und Moritz (1996)</em><span>Schauspieler liest, Dias zeigen Buschs Bilder, der Chor singt einzelne Szenen</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- MUSIK KAUFEN -->
+  <section id="musik-kaufen">
+    <p class="eyebrow">Musik kaufen</p>
+    <h2>CDs und Musizierhefte</h2>
+    <p>Sie können unsere Musik als CD kaufen oder als Notenhefte zum selber Musizieren.</p>
+
+    <h3>CD bestellen</h3>
+    <div class="cd-grid">
+      <div class="cd-card">
+        <p class="cd-title">The Days of Wine and Roses</p>
+        <p class="cd-tracks">The days of wine and roses · Walkin' my baby back home · Ain't she sweet? · Ich hab noch einen Koffer in Berlin · In der Nacht ist der Mensch nicht gern alleine · Hymne à l'amour · O Donna Clara · Ain't misbehavin' · I can't give you anything but love · Serenata · Brother, can you spare a dime? · Manhã · All the things you are · Long ago and far away · Yesterdays · Take me back to Colorado · Frenesí · Moon river</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+      <div class="cd-card">
+        <p class="cd-title">El Cumbanchero</p>
+        <p class="cd-tracks">El Cumbanchero · Besame mucho · Cielito lindo · The Breeze and I · Adiós pampa mía · Ay ay ay · Guantanamera · Brazil · Carnavalito · Coconut Woman · Maria Cristina · Perfidia · Me voy pa'l pueblo · El Manisero</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+      <div class="cd-card">
+        <p class="cd-title">Estrellas (Navidad española)</p>
+        <p class="cd-tracks">Auf dem Berge, da wehet der Wind · Ein Kind geborn in Bethlehem · Wohl zmitzt i de Nacht · Que Jésus est aimable · Un flambeau · Quando nascette ninno · See amid the winter's snow · Oggi è nato un bel bambino · Entre le boeuf et l'âne gris · The First Nowell · Noi siamo i tre re · Deck the hall · Acalanto · Cantando vas · Tan, tan, van por el desierto · La estrella venida · Ya viene la vieja · Hvalite imea Gospodne · Corramos, corramos – Adorar al niño · Navidadau · Virgin Mary had a baby boy</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+      <div class="cd-card">
+        <p class="cd-title">Weihnacht in Europa</p>
+        <p class="cd-tracks">Wohl zmitzt i de Nacht · Lieb Nachtigall, wach auf · Auf dem Berge, da wehet der Wind · O Jesulein zart · Un flambeau · Saint Joseph a fait un nid · Fivelgö · Maria die zoude naar Bethlehem gaan · In't stedetje van Nazareth · God rest you, merry gentleman · Hark, the herald angels sing · Lute-book Lullaby · Mizrna, cicha stajenka · Radujcie sie · Lulajze Jezuniu · Mennyböl az angyal · O Gyönyörüszép · Kirje · Dormi, dormi, bel bambino · Bambino divino · Oggi è nato un bel bambino · Señora Doña Maria · La flor de la primavera · Ya viene la vieja · No sé, si será el amor · Una pandereta suena · La serrana de la sierra · Con guitarras y almireces · Manolito</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+      <div class="cd-card">
+        <p class="cd-title">Anneli</p>
+        <p class="cd-tracks">Bumbardung · Anneli, wo bisch geschter gsi? · Pavane Suisse · Altemer Schottisch · Jungfer Käthen-Suite · Es wollt ein Mähderli wandlen · Benkemer Polka · Frisch fröhlich wend wir singen · Es Wälzerli für Dachse · Stets in Truure mues i lebä · Chlee-Suite · Du fragsch mi, wär i bi · Füürthaler Polka · Es wott es Froueli zMärit gah</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+      <div class="cd-card">
+        <p class="cd-title">Somerset Suite</p>
+        <p class="cd-tracks">Somerset Suite · Folkestone Suite · Scarborough Fair · A Baron's Heir · Irish Ladies · The Luck Penny · Music in the Glen · The Pleasures of Home · Banks of Claudy</p>
+        <span class="cd-price">CHF 20.–</span>
+      </div>
+    </div>
+
+    <h3>Musizierhefte kaufen</h3>
+    <div class="heft-grid">
+      <div class="heft-card">
+        <p>Volksmusik aus Flums, Säntis, Ticino, Avenches, Davos, bearbeitet für zwei Melodiestimmen (Flöten, Geigen, Oboe, Akkordeon) und Begleitstimme (Gitarre, Akkordeon). Extra-Ausgabe für Bb-Instrumente.</p>
+        <span class="heft-price">CHF 28.–</span>
+      </div>
+      <div class="heft-card">
+        <p>Musizierhefte für zwei Geigen, zwei Klarinetten, Querflöte und Geige (oder Klarinette), mit Begleitstimme (Gitarre, Akkordeon, Cello, Fagott, Bassklarinette). Ausgaben in C und in Bb.</p>
+        <span class="heft-price">CHF 28.–</span>
+      </div>
+      <div class="heft-card">
+        <p>Volksmusikbearbeitungen für zwei Melodiestimmen (Geigen, Klarinetten, Akkordeon, Querflöten, Blockflöten, Oboe, auch gemischt). Begleitstimme für Gitarre, Akkordeon, Fagott, Cello, Kontrabass.</p>
+        <span class="heft-price">CHF 28.–</span>
+      </div>
+      <div class="heft-card">
+        <p>Volksmusik aus der Sammlung Hanny Christen, für drei Stimmen bearbeitet von Roland Fink.</p>
+        <span class="heft-price">CHF 22.–</span>
+      </div>
+      <div class="heft-card">
+        <p>Musizierhefte mit Tänzen aus der Sammlung Hanny Christen. Hausmusik für verschiedene Instrumente bearbeitet von Roland Fink.</p>
+        <span class="heft-price">CHF 22.–</span>
+      </div>
+    </div>
+
+    <div class="order-note">
+      Bestellungen per E-Mail an <a href="mailto:rfink@pingnet.ch">rfink@pingnet.ch</a>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section id="kontakt">
+    <p class="eyebrow">Kontakt</p>
+    <h2>Kontakt</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <p class="role">Dirigent</p>
+        <p class="name">Roland Fink</p>
+        <p>Im Schalchenriet 3<br>8453 Alten<br><a href="tel:+41523173779">052 317 37 79</a><br><a href="mailto:rfink@pingnet.ch">rfink@pingnet.ch</a></p>
+      </div>
+      <div class="contact-card">
+        <p class="role">Projekte</p>
+        <p class="name">Elisabeth Fink</p>
+        <p>Im Schalchenriet 3<br>8453 Alten<br><a href="mailto:efink_senn@icloud.com">efink_senn@icloud.com</a></p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 1965–2025 Roland Fink · rolandfinksingers.ch
+</footer>
+
+</body>
+</html>
